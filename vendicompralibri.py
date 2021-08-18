@@ -32,7 +32,7 @@ def start(update, context):
 
 def titolo(update, context):
     user = update.message.from_user
-    context.user_data['titolo'] = update.message.text
+    context.user_data['titolo'] = update.message.text.replace('\n', ', ')
     update.message.reply_text(
         'Ok, inserisci l\'autore:'
     )
@@ -40,7 +40,7 @@ def titolo(update, context):
 
 def autore(update, context):
     user = update.message.from_user
-    context.user_data['autore'] = update.message.text
+    context.user_data['autore'] = update.message.text.replace('\n', ', ')
     update.message.reply_text(
         'Ok, inserisci l\'isbn (attenzione al formato, es. 978-3-16-148410-0):'
     )
@@ -48,7 +48,7 @@ def autore(update, context):
 
 def isbn(update, context):
     user = update.message.from_user
-    context.user_data['isbn'] = update.message.text
+    context.user_data['isbn'] = update.message.text.replace('\n', ', ')
     update.message.reply_text(
         'Ok, inserisci le informazioni aggiuntive elencate sul sito:'
         '\n- Stato (es. nuovo, usato ecc.)'
@@ -121,7 +121,7 @@ def skip_photos(update, context):
 
 def ig(update, context):
     user = update.message.from_user
-    context.user_data['ig'] = update.message.text
+    context.user_data['ig'] = update.message.text.replace('\n', ', ').replace('@', '')
     update.message.reply_text(
         'Ok, inserisci la tua mail:'
         '\n\nPer saltare il passaggio usa /skip'
@@ -137,7 +137,7 @@ def skip_ig(update, context):
 
 def mail(update, context):
     user = update.message.from_user
-    context.user_data['mail'] = update.message.text
+    context.user_data['mail'] = update.message.text.replace('\n', ', ')
     update.message.reply_text(
         'Grazie per il tempo dedicato, nel giro di 1-2 giorni vedrai il tuo libro inserito insieme agli altri in vendita sul sito.'
     )
